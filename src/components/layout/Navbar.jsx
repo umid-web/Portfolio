@@ -47,7 +47,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img src={image} alt="Umidjon" className="logo-image" />
+            <h2 className="logo-text">Umid<span>WEB</span></h2>
           </motion.div>
         </NavLink>
         <div className="navbar-actions-mobile">

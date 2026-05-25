@@ -4,15 +4,37 @@
   left: 0;
   right: 0;
   height: 80px;
-  background: transparent;
   z-index: 1000;
-  transition: all 0.3s ease;
-  
+
+  background: rgba(10, 10, 30, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.35s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(129, 140, 248, 0.08),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
   &.scrolled {
-    background: var(--color-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(10, 10, 30, 0.75);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(129, 140, 248, 0.2);
   }
 
   .navbar-container {
@@ -22,107 +44,154 @@
     justify-content: space-between;
   }
 
+  /* ================= LOGO ================= */
   .logo {
     font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--text-primary);
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #fff;
     text-decoration: none;
-    
+    position: relative;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
     span {
-      color: #818cf8;
+      color: #facc15; // 🟡 YELLOW
+      text-shadow: 0 0 12px rgba(250, 204, 21, 0.8);
+      animation: glow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes glow {
+      0%,
+      100% {
+        text-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+      }
+      50% {
+        text-shadow: 0 0 18px rgba(250, 204, 21, 1);
+      }
     }
   }
 
+  /* ================= NAV LINKS ================= */
   .nav-links {
     display: flex;
     align-items: center;
     gap: 2rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
 
     li {
+      position: relative;
+
       a {
-        color: var(--text-secondary);
-        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
         font-weight: 500;
         font-size: 0.95rem;
-        transition: color 0.3s ease;
+        text-decoration: none;
+        padding: 0.4rem 0.6rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
         position: relative;
-        
+
+        /* underline effect */
         &::after {
           content: '';
           position: absolute;
-          bottom: -5px;
-          left: 0;
+          left: 50%;
+          bottom: -4px;
           width: 0;
           height: 2px;
-          background: #818cf8;
-          transition: width 0.3s ease;
+          background: linear-gradient(90deg, #818cf8, #facc15);
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+          border-radius: 10px;
         }
 
-        &:hover, &.active {
-          color: var(--text-primary);
-          
+        &:hover {
+          color: #fff;
+          transform: translateY(-2px);
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &.active {
+          color: #fff;
+          background: rgba(129, 140, 248, 0.15);
+          box-shadow: 0 0 20px rgba(129, 140, 248, 0.25);
+
           &::after {
-            width: 100%;
+            width: 70%;
           }
         }
       }
     }
 
+    /* resume button */
     .nav-extra {
-      margin-left: 1rem;
-      
       .resume-btn {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+
         padding: 0.6rem 1.2rem;
-        background: rgba(129, 140, 248, 0.15);
-        color: #818cf8;
-        border-radius: 8px;
+        border-radius: 10px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(129, 140, 248, 0.2),
+          rgba(250, 204, 21, 0.15)
+        );
+
+        color: #fff;
         font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
         transition: all 0.3s ease;
-        
-        &::after {
-          display: none;
-        }
 
         &:hover {
-          background: #818cf8;
-          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(129, 140, 248, 0.25);
+          background: linear-gradient(135deg, #818cf8, #facc15);
+          color: #000;
         }
       }
     }
-    
+
     .nav-desktop-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-left: 1rem;
-      padding-left: 1.5rem;
-      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      padding-left: 1.2rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
     }
   }
 
+  /* ================= MOBILE ================= */
   .navbar-actions-mobile {
     display: none;
     align-items: center;
     gap: 1rem;
-    
+
     .burger {
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.5rem;
+      border-radius: 10px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        background: rgba(129, 140, 248, 0.2);
+      }
     }
   }
 
+  /* ================= MOBILE MENU ================= */
   @media (max-width: 768px) {
     .navbar-actions-mobile {
       display: flex;
@@ -134,31 +203,22 @@
       right: -100%;
       width: 100%;
       height: calc(100vh - 80px);
-      background: rgba(10, 10, 42, 0.98);
+
+      background: rgba(10, 10, 30, 0.95);
       backdrop-filter: blur(20px);
+
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      gap: 3rem;
+      gap: 2.5rem;
+
       transition: right 0.4s ease;
-      
-      &.open {
-        right: 0;
+
+      li a {
+        font-size: 1.6rem;
       }
 
-      li {
-        a {
-          font-size: 1.5rem;
-        }
-      }
-      
-      .nav-extra {
-        margin: 0;
-        
-        .resume-btn {
-          font-size: 1.2rem;
-          padding: 1rem 2rem;
-        }
+      &.open {
+        right: 0;
       }
     }
   }
