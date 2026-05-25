@@ -6,11 +6,11 @@
   height: 80px;
   z-index: 1000;
 
-  background: rgba(10, 10, 30, 0.35);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid transparent;
   transition: all 0.35s ease;
 
   &::before {
@@ -32,7 +32,9 @@
   }
 
   &.scrolled {
-    background: rgba(10, 10, 30, 0.75);
+    background: rgba(10, 10, 30, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid rgba(129, 140, 248, 0.2);
   }

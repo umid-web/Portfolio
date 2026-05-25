@@ -88,7 +88,7 @@ const Projects = () => {
         </motion.div>
       ) : (
         <div className="empty-projects">
-          <p>Hozircha loyihalar yo'q. Admin paneldan qo'shing.</p>
+          <p>{t('projects.empty')}</p>
         </div>
       )}
     </motion.div>

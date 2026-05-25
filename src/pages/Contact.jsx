@@ -18,7 +18,7 @@ const Contact = () => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    toast.success('Xabar yuborildi! Tez orada siz bilan bog\'lanamiz.');
+    toast.success(t('contact.success'));
     setFormData({ name: '', email: '', message: '' });
     setIsLoading(false);
   };
@@ -49,8 +49,8 @@ const Contact = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <h3>Keling, birga ishlaymiz!</h3>
-          <p>Yangi loyihalar va hamkorlik uchun ochiqman. Har qanday savollaringiz bo'lsa, tortinmay yozing.</p>
+          <h3>{t('contact.subtitle')}</h3>
+          <p>{t('contact.description')}</p>
 
           <div className="contact-details">
             <div className="contact-item">
@@ -80,7 +80,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              placeholder="Sizning ismingiz..."
+              placeholder={t('contact.placeholder_name')}
             />
           </div>
 
@@ -93,7 +93,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder="Sizning elektron pochtangiz..."
+              placeholder={t('contact.placeholder_email')}
             />
           </div>
 
@@ -106,12 +106,12 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               required
-              placeholder="Xabaringizni yozing..."
+              placeholder={t('contact.placeholder_message')}
             ></textarea>
           </div>
 
           <button type="submit" className="btn btn--primary" disabled={isLoading}>
-            {isLoading ? 'Yuborilmoqda...' : <><FaPaperPlane /> {t('contact.send')}</>}
+            {isLoading ? t('contact.sending') : <><FaPaperPlane /> {t('contact.send')}</>}
           </button>
         </motion.form>
       </div>

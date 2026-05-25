@@ -5,6 +5,7 @@ import { FaDownload } from 'react-icons/fa'
 
 import SEO from '@/components/common/SEO'
 import profileImg from '@/Images/5.png'
+import resumePdf from '@/Images/Tojimatov_Umidjon_Resume.pdf'
 
 import '@/styles/pages/About.scss'
 
@@ -59,20 +60,15 @@ const About = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2>Men kimman?</h2>
+          <h2>{t('about.subtitle')}</h2>
 
           <p className="lead">{t('about.description')}</p>
 
-          <p>
-            Zamonaviy veb texnologiyalardan foydalanib, tez, xavfsiz va
-            foydalanuvchilar uchun qulay bo‘lgan ilovalar yarataman. Men asosan
-            Frontend yo‘nalishida ishlayman va chiroyli interfeyslarni
-            jonlantirishni yoqtiraman.
-          </p>
+          <p>{t('about.extended_desc')}</p>
 
           {/* BUTTONS */}
           <div className="about-actions">
-            <a href="/resume.pdf" download className="btn btn--primary">
+            <a href={resumePdf} download className="btn btn--primary">
               <FaDownload />
               {t('nav.resume')}
             </a>
@@ -80,7 +76,7 @@ const About = () => {
 
           {/* SKILLS */}
           <div className="skills-section mt-4">
-            <h3>Mening Ko‘nikmalarim</h3>
+            <h3>{t('about.skills')}</h3>
 
             <div className="skills-grid">
               {skills.map((skill, index) => (

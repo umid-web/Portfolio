@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import toast from 'react-hot-toast';
-import { FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import '@/styles/components/Admin.scss';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
+import { FaLock, FaEye, FaEyeSlash } from 'react-icons/fa'
+import '@/styles/components/Admin.scss'
 
-const ADMIN_PASSWORD = 'admin123';
+const ADMIN_PASSWORD = 'umidjon0528'
 
 const Login = () => {
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
     // Simulate small delay for UX
-    await new Promise((r) => setTimeout(r, 600));
+    await new Promise((r) => setTimeout(r, 600))
 
     if (password === ADMIN_PASSWORD) {
-      localStorage.setItem('adminAuth', 'true');
-      toast.success('Muvaffaqiyatli kirdingiz!');
-      navigate('/admin/dashboard');
+      localStorage.setItem('adminAuth', 'true')
+      toast.success('Muvaffaqiyatli kirdingiz!')
+      navigate('/admin/dashboard')
     } else {
-      toast.error('Parol noto\'g\'ri!');
+      toast.error("Parol noto'g'ri!")
     }
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return (
     <div className="admin-login">
@@ -89,7 +89,7 @@ const Login = () => {
         </form>
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

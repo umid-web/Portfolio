@@ -9,24 +9,36 @@
   },
   "home": {
     "title": "Portfoliomga Xush Kelibsiz",
+    "greeting": "Salom, mening ismim",
     "subtitle": "Men zamonaviy va mukammal raqamli tajribalar yaratishga ixtisoslashgan Frontend dasturchiman.",
     "cta_projects": "Mening Ishlarim",
     "cta_contact": "Men bilan aloqa"
   },
   "about": {
     "title": "Men haqimda",
-    "description": "Men React, Vite va zamonaviy veb texnologiyalariga ixtisoslashgan malakali dasturchiman."
+    "subtitle": "Men kimman?",
+    "description": "Men React, Vite va zamonaviy veb texnologiyalariga ixtisoslashgan malakali dasturchiman.",
+    "extended_desc": "Zamonaviy veb texnologiyalardan foydalanib, tez, xavfsiz va foydalanuvchilar uchun qulay bo‘lgan ilovalar yarataman. Men asosan Frontend yo‘nalishida ishlayman va chiroyli interfeyslarni jonlantirishni yoqtiraman.",
+    "skills": "Mening Ko‘nikmalarim"
   },
   "projects": {
     "title": "Mening Loyihalarim",
     "demo": "Jonli Demo",
-    "code": "Manba KODI"
+    "code": "Manba KODI",
+    "empty": "Hozircha loyihalar yo'q. Admin paneldan qo'shing."
   },
   "contact": {
     "title": "Aloqaga chiqing",
     "name": "Ism",
     "email": "Email",
     "message": "Xabar",
-    "send": "Xabarni yuborish"
+    "send": "Xabarni yuborish",
+    "sending": "Yuborilmoqda...",
+    "success": "Xabar yuborildi! Tez orada siz bilan bog'lanamiz.",
+    "subtitle": "Keling, birga ishlaymiz!",
+    "description": "Yangi loyihalar va hamkorlik uchun ochiqman. Har qanday savollaringiz bo'lsa, tortinmay yozing.",
+    "placeholder_name": "Sizning ismingiz...",
+    "placeholder_email": "Sizning elektron pochtangiz...",
+    "placeholder_message": "Xabaringizni yozing..."
   }
 }
