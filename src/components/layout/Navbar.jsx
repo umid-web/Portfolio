@@ -5,7 +5,7 @@ import { FaBars, FaTimes, FaDownload } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import LanguageSwitcher from '@/components/common/LanguageSwitcher'
 import '@/styles/components/Navbar.scss'
-
+import image from '../../Images/5.png'
 const Navbar = () => {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
