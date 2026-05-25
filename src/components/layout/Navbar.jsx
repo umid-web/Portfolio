@@ -47,11 +47,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img
-              src="src/Images/5.png"
-              alt=""
-              style={{ height: '350px', width: '300px', paddingTop: '30px' }}
-            />
+            <img src={image} alt="Umidjon" className="logo-image" />
           </motion.div>
         </NavLink>
         <div className="navbar-actions-mobile">
