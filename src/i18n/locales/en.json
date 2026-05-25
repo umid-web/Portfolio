@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "home": {
+    "title": "Welcome to My Portfolio",
+    "subtitle": "I'm a Frontend Developer specializing in building exceptional digital experiences.",
+    "cta_projects": "View My Work",
+    "cta_contact": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a passionate software developer with expertise in React, Vite, and modern web technologies."
+  },
+  "projects": {
+    "title": "My Projects",
+    "demo": "Live Demo",
+    "code": "Source Code"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  }
+}

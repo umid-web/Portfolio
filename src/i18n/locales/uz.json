@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "projects": "Loyihalar",
+    "services": "Xizmatlar",
+    "contact": "Aloqa",
+    "resume": "Rezyume"
+  },
+  "home": {
+    "title": "Portfoliomga Xush Kelibsiz",
+    "subtitle": "Men zamonaviy va mukammal raqamli tajribalar yaratishga ixtisoslashgan Frontend dasturchiman.",
+    "cta_projects": "Mening Ishlarim",
+    "cta_contact": "Men bilan aloqa"
+  },
+  "about": {
+    "title": "Men haqimda",
+    "description": "Men React, Vite va zamonaviy veb texnologiyalariga ixtisoslashgan malakali dasturchiman."
+  },
+  "projects": {
+    "title": "Mening Loyihalarim",
+    "demo": "Jonli Demo",
+    "code": "Manba KODI"
+  },
+  "contact": {
+    "title": "Aloqaga chiqing",
+    "name": "Ism",
+    "email": "Email",
+    "message": "Xabar",
+    "send": "Xabarni yuborish"
+  }
+}

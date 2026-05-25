@@ -1,0 +1,14 @@
+// src/styles/components/SectionWrapper.scss
+
+/*
+  SectionWrapper styling – provides consistent spacing and optional glass effect.
+  Adjust $spacing-4 etc. from _variables.scss.
+*/
+
+.section-wrapper {
+  position: relative;
+  padding: $spacing-6 $spacing-4;
+  margin: $spacing-8 0;
+  // Optional backdrop (glass) for visual flair
+  @include glass-card();
+}

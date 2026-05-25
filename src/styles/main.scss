@@ -1,0 +1,28 @@
+// src/styles/main.scss
+
+// Imports
+
+@import "base/reset";
+@import "base/typography";
+@import "abstracts/_index.scss";
+
+@import "themes/dark";
+
+// Utility classes
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+}
+
+.mt-4 { margin-top: $spacing-4; }
+.mb-4 { margin-bottom: $spacing-4; }
+
+// Glass card utility (can be applied via class="glass-card")
+.glass-card {
+  @include glass-card();
+}

@@ -1,0 +1,17 @@
+// src/styles/themes/_dark.scss
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Dark theme background and glassmorphism backdrop
+$theme-bg: $color-bg-dark; // defined in variables
+
+body[data-theme='dark'] {
+  background: $theme-bg;
+  color: $color-white;
+}
+
+// Glass card mixin usage example (can be applied via .glass-card class)
+.glass-card {
+  @include glass-card();
+}

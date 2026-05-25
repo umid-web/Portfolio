@@ -1,0 +1,29 @@
+// src/styles/themes/_variables.scss
+// CSS Custom Properties for Light and Dark themes
+
+// Light theme (default) variables
+:root {
+  /* Backgrounds */
+  --color-bg: #f5f5f5; // light background
+  --color-bg-glass: rgba(255, 255, 255, 0.7);
+
+  /* Text colors */
+  --text-primary: #0a0a2a; // dark text for headings
+  --text-secondary: #333333; // secondary text
+  --text-inverse: #ffffff; // for dark backgrounds
+
+  /* Border and accent */
+  --border-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #5a0dff; // purple gradient start
+}
+
+// Dark theme overrides (when body[data-theme='dark'] is set)
+body[data-theme='dark'] {
+  --color-bg: rgba(10, 10, 42, 0.85); // matches $color-bg-dark
+  --color-bg-glass: rgba(10, 10, 42, 0.7);
+  --text-primary: #ffffff; // white text on dark background
+  --text-secondary: #e0e0e0;
+  --text-inverse: #0a0a2a; // dark text for light cards
+  --border-color: rgba(255, 255, 255, 0.05);
+  --accent-color: #818cf8; // lighter accent for dark mode
+}
