@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
@@ -13,6 +13,13 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
+  // Protektsiyadagi - agar avvaldan tizimga kirgansa, dashboard ga yubor
+  useEffect(() => {
+    if (localStorage.getItem('adminAuth') === 'true') {
+      navigate('/admin/dashboard', { replace: true })
+    }
+  }, [navigate])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
@@ -23,7 +30,7 @@ const Login = () => {
     if (password === ADMIN_PASSWORD) {
       localStorage.setItem('adminAuth', 'true')
       toast.success('Muvaffaqiyatli kirdingiz!')
-      navigate('/admin/dashboard')
+      navigate('/admin/dashboard', { replace: true })
     } else {
       toast.error("Parol noto'g'ri!")
     }
@@ -38,11 +45,16 @@ const Login = () => {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <div className="login-icon">
+        <motion.div
+          className="login-icon"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+        >
           <FaLock />
-        </div>
+        </motion.div>
+
         <h1>Admin Panel</h1>
-        <p className="login-subtitle">Portfolio boshqaruv paneli</p>
+        <p className="login-subtitle">🔐 Portfolio boshqaruv paneli</p>
 
         <form onSubmit={handleSubmit} className="admin-form">
           <div className="form-group">
@@ -57,7 +69,7 @@ const Login = () => {
                 required
                 autoFocus
               />
-              <button
+              <motion.button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
@@ -70,10 +82,12 @@ const Login = () => {
                   color: 'rgba(255,255,255,0.4)',
                   cursor: 'pointer',
                   padding: '4px',
+                  fontSize: '18px',
                 }}
+                whileHover={{ color: 'rgba(59, 130, 246, 0.8)' }}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
+              </motion.button>
             </div>
           </div>
 
@@ -81,12 +95,24 @@ const Login = () => {
             type="submit"
             className="btn btn--primary"
             disabled={isLoading}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={!isLoading ? { scale: 1.05 } : {}}
+            whileTap={!isLoading ? { scale: 0.95 } : {}}
+            style={{ width: '100%', marginTop: '8px' }}
           >
-            {isLoading ? 'Kirish...' : 'Kirish'}
+            {isLoading ? '⏳ Kirish...' : '✓ Kirish'}
           </motion.button>
         </form>
+
+        <p
+          style={{
+            fontSize: '12px',
+            color: 'rgba(255,255,255,0.4)',
+            textAlign: 'center',
+            marginTop: '20px',
+          }}
+        >
+          Faqat admin uchun
+        </p>
       </motion.div>
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ProjectContext } from '@/context/ProjectContext'
 import { ThemeContext } from '@/context/ThemeContext'
@@ -43,15 +43,116 @@ const ProjectForm = ({ initialData = {}, onSubmit, onCancel, isEdit }) => {
   const [title, setTitle] = useState(initialData.title || '')
   const [description, setDescription] = useState(initialData.description || '')
   const [image, setImage] = useState(initialData.image || '')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (!title.trim()) return toast.error('Sarlavha kerak!')
     if (!description.trim()) return toast.error('Tavsif kerak!')
 
+    setIsSubmitting(true)
+    await new Promise((r) => setTimeout(r, 300))
+
     onSubmit({ title, description, image })
+    setIsSubmitting(false)
   }
+
+  return (
+    <form onSubmit={handleSubmit} className="admin-form">
+      <div className="modal-header">
+        <h2>{isEdit ? '✏️ Tahrirlash' : '➕ Yangi loyiha'}</h2>
+        <motion.button
+          type="button"
+          onClick={onCancel}
+          whileHover={{ rotate: 90 }}
+        >
+          <FaTimes />
+        </motion.button>
+      </div>
+
+      <input
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Loyiha sarlavhasi"
+        maxLength={100}
+        required
+      />
+
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Loyiha tavsifi..."
+        maxLength={500}
+        required
+      />
+
+      <label style={{ display: 'block', marginBottom: '8px' }}>
+        <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>
+          Rasm (ixtiyoriy)
+        </span>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0]
+            if (file) {
+              if (file.size > 5 * 1024 * 1024) {
+                toast.error('Rasm 5MB dan kichik bo\'lishi kerak')
+                return
+              }
+              const reader = new FileReader()
+              reader.onload = () => setImage(reader.result)
+              reader.readAsDataURL(file)
+            }
+          }}
+          style={{ marginTop: '8px' }}
+        />
+      </label>
+
+      {image && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          style={{
+            width: '100%',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            marginBottom: '12px',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+          }}
+        >
+          <img
+            src={image}
+            alt="preview"
+            style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+          />
+        </motion.div>
+      )}
+
+      <div className="form-actions">
+        <motion.button
+          type="submit"
+          className="btn btn--primary"
+          disabled={isSubmitting}
+          whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+          whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+        >
+          {isSubmitting ? 'Saqlanmoqda...' : isEdit ? 'Saqlash' : 'Qo\'shish'}
+        </motion.button>
+        <motion.button
+          type="button"
+          className="btn btn--ghost"
+          onClick={onCancel}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Bekor qilish
+        </motion.button>
+      </div>
+    </form>
+  )
+}
 
   return (
     <form onSubmit={handleSubmit} className="admin-form">
@@ -119,6 +220,13 @@ const Dashboard = () => {
   const [editMode, setEditMode] = useState(false)
   const [currentProject, setCurrentProject] = useState(null)
 
+  // Protektsiyadagi - agar login bo'lmagan bo'lsa login page ga yubor
+  useEffect(() => {
+    if (localStorage.getItem('adminAuth') !== 'true') {
+      navigate('/admin/login', { replace: true })
+    }
+  }, [navigate])
+
   const openAdd = () => {
     setEditMode(false)
     setCurrentProject(null)
@@ -158,9 +266,14 @@ const Dashboard = () => {
     <div className="admin-page">
       {/* HEADER */}
       <header className="admin-header">
-        <h2>Admin Panel</h2>
-
         <div>
+          <h2>Admin Panel</h2>
+        </div>
+
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)' }}>
+            {projects.length} loyiha
+          </span>
           <button onClick={handleLogout}>
             <FaSignOutAlt /> Chiqish
           </button>
@@ -169,30 +282,69 @@ const Dashboard = () => {
 
       {/* CONTENT */}
       <div className="admin-content">
-        <button className="btn btn--primary" onClick={openAdd}>
-          <FaPlus /> Yangi loyiha
-        </button>
+        <motion.button
+          className="btn btn--primary"
+          onClick={openAdd}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FaPlus /> Yangi loyiha qo'shish
+        </motion.button>
 
-        <h3>Loyihalar ({projects.length})</h3>
+        <h3>📋 Loyihalar ro'yxati</h3>
 
-        <div className="project-grid">
-          {projects.map((p) => (
-            <div key={p.id} className="project-card">
-              <h4>{p.title}</h4>
-              <p>{p.description}</p>
+        {projects.length === 0 ? (
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '60px 20px',
+              color: 'rgba(255,255,255,0.5)',
+            }}
+          >
+            <p style={{ fontSize: '18px', marginBottom: '16px' }}>
+              Hali loyiha yo'q
+            </p>
+            <p style={{ fontSize: '14px' }}>
+              Yangi loyiha qo'shish uchun yuqoridagi tugmani bosing
+            </p>
+          </div>
+        ) : (
+          <div className="project-grid">
+            {projects.map((p) => (
+              <motion.div
+                key={p.id}
+                className="project-card"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ y: -4 }}
+              >
+                <h4>{p.title}</h4>
+                <p>{p.description}</p>
 
-              <div className="project-actions">
-                <button onClick={() => openEdit(p)}>
-                  <FaEdit />
-                </button>
+                <div className="project-actions">
+                  <motion.button
+                    onClick={() => openEdit(p)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    title="Tahrirlash"
+                  >
+                    <FaEdit />
+                  </motion.button>
 
-                <button onClick={() => handleDelete(p.id, p.title)}>
-                  <FaTrash />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <motion.button
+                    onClick={() => handleDelete(p.id, p.title)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    title="O'chirish"
+                  >
+                    <FaTrash />
+                  </motion.button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* MODAL */}
