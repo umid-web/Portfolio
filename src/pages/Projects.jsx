@@ -18,8 +18,7 @@ const projects = [
   {
     id: 2,
     category: 'frontend',
-    image:
-      'src/Images/9b7449a1-6a78-4464-86ab-47e6238e17c7.png',
+    image: 'src/Images/9b7449a1-6a78-4464-86ab-47e6238e17c7.png',
     tech: ['React', 'Vite', 'SCSS', 'Framer Motion'],
     github: 'https://github.com/umid-web/Movie',
     live: 'https://youtube-clone1-flame.vercel.app/',
@@ -36,11 +35,10 @@ const projects = [
   {
     id: 4,
     category: 'frontend',
-    image:
-      'src/Images/50aa51b8-2b7e-407e-9682-1dc4ed9cc5b8.png',
+    image: 'src/Images/50aa51b8-2b7e-407e-9682-1dc4ed9cc5b8.png',
     tech: ['React', 'API', 'Chart.js'],
     github: 'https://github.com/umid-web/Weather',
-    live: 'weather-31xo-umidjontojimatov742-9811s-projects.vercel.app',
+    live: 'https://weather-31xo-umidjontojimatov742-9811s-projects.vercel.app/',
   },
   {
     id: 5,
