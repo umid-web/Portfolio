@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ProjectContext } from '@/context/ProjectContext'
-import { ThemeContext } from '@/context/ThemeContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
 import {
@@ -10,8 +9,6 @@ import {
   FaTrash,
   FaTimes,
   FaSignOutAlt,
-  FaSun,
-  FaMoon,
 } from 'react-icons/fa'
 import '@/styles/components/Admin.scss'
 
@@ -112,7 +109,6 @@ const Dashboard = () => {
   const { projects, addProject, editProject, deleteProject } =
     useContext(ProjectContext)
 
-  const { theme, toggleTheme } = useContext(ThemeContext)
   const navigate = useNavigate()
 
   const [isModalOpen, setModalOpen] = useState(false)

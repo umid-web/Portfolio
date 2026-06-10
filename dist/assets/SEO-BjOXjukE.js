@@ -1,1 +1,0 @@
-import{c as m}from"./vendor-bxxeS7T-.js";function a({title:t,description:n}){return m.useEffect(()=>{if(t&&(document.title=t),n){let e=document.querySelector('meta[name="description"]');e||(e=document.createElement("meta"),e.setAttribute("name","description"),document.head.appendChild(e)),e.setAttribute("content",n)}},[t,n]),null}export{a as S};

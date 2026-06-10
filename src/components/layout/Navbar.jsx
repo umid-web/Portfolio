@@ -52,7 +52,6 @@ const Navbar = () => {
           </motion.div>
         </NavLink>
         <div className="navbar-actions-mobile">
-          {isMobile && <ThemeToggle />}
           {isMobile && <LanguageSwitcher />}
           {isMobile && (
             <button

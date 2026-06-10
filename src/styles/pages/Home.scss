@@ -312,6 +312,10 @@
     font-size: 2.2rem;
   }
 
+  .hero-content .hero-subtitle {
+    font-size: 1rem;
+  }
+
   .hero-actions {
     flex-direction: column;
 
@@ -319,5 +323,20 @@
       width: 100%;
       justify-content: center;
     }
+  }
+
+  .hero-image .glass-panel .code-snippet {
+    padding: 1.2rem 1rem 1.5rem;
+    overflow-x: auto;
+
+    pre {
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+  }
+
+  .hero-image .blob {
+    width: 180px;
+    height: 180px;
   }
 }
