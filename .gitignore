@@ -1,17 +1,53 @@
-# Node & npm
+
+# =========================
+# Dependencies
+# =========================
 node_modules/
+
+# =========================
 # Build output
+# =========================
 dist/
-# Local env files
+build/
+
+# =========================
+# Environment variables
+# =========================
 .env
-# Vercel output
-.vercel
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# keep example env
+!.env.example
+
+# =========================
 # Logs
-npm-debug.log
-yarn-error.log
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
 # OS files
+# =========================
 .DS_Store
 Thumbs.db
-# Misc
-.idea/
+
+# =========================
+# IDE / Editor
+# =========================
 .vscode/
+.idea/
+
+# =========================
+# Vite cache
+# =========================
+.vite/
+
+# =========================
+# Coverage / Tests
+# =========================
+coverage/
