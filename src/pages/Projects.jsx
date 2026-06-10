@@ -5,6 +5,10 @@ import SEO from '@/components/common/SEO'
 import { useLanguage } from '@/context/LanguageContext'
 import '@/styles/pages/Projects.scss'
 
+// Local images
+import movieImg from '@/Images/9b7449a1-6a78-4464-86ab-47e6238e17c7.png'
+import weatherImg from '@/Images/50aa51b8-2b7e-407e-9682-1dc4ed9cc5b8.png'
+
 const projects = [
   {
     id: 1,
@@ -18,7 +22,7 @@ const projects = [
   {
     id: 2,
     category: 'frontend',
-    image: 'src/Images/9b7449a1-6a78-4464-86ab-47e6238e17c7.png',
+    image: movieImg,
     tech: ['React', 'Vite', 'SCSS', 'Framer Motion'],
     github: 'https://github.com/umid-web/Movie',
     live: 'https://youtube-clone1-flame.vercel.app/',
@@ -35,7 +39,7 @@ const projects = [
   {
     id: 4,
     category: 'frontend',
-    image: 'src/Images/50aa51b8-2b7e-407e-9682-1dc4ed9cc5b8.png',
+    image: weatherImg,
     tech: ['React', 'API', 'Chart.js'],
     github: 'https://github.com/umid-web/Weather',
     live: 'https://weather-31xo-umidjontojimatov742-9811s-projects.vercel.app/',
@@ -70,6 +74,7 @@ const filters = [
 const Projects = () => {
   const { t } = useLanguage()
   const [activeFilter, setActiveFilter] = useState('all')
+
   const filteredProjects =
     activeFilter === 'all'
       ? projects
@@ -97,7 +102,9 @@ const Projects = () => {
         {filters.map((filter) => (
           <button
             key={filter.id}
-            className={`filter-tab ${activeFilter === filter.id ? 'active' : ''}`}
+            className={`filter-tab ${
+              activeFilter === filter.id ? 'active' : ''
+            }`}
             onClick={() => setActiveFilter(filter.id)}
           >
             {t.projects.filters[filter.key]}
@@ -120,6 +127,7 @@ const Projects = () => {
                 src={project.image}
                 alt={t.projects.items[project.id - 1][0]}
               />
+
               <div className="project-overlay">
                 <div className="project-links">
                   <a
@@ -127,16 +135,21 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-link"
-                    aria-label={`${t.projects.items[project.id - 1][0]} GitHub`}
+                    aria-label={`${
+                      t.projects.items[project.id - 1][0]
+                    } GitHub`}
                   >
                     <FaGithub />
                   </a>
+
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-link"
-                    aria-label={`${t.projects.items[project.id - 1][0]} live preview`}
+                    aria-label={`${
+                      t.projects.items[project.id - 1][0]
+                    } Live Preview`}
                   >
                     <FaExternalLinkAlt />
                   </a>
@@ -146,6 +159,7 @@ const Projects = () => {
 
             <div className="project-content">
               <h3>{t.projects.items[project.id - 1][0]}</h3>
+
               <p className="project-description">
                 {t.projects.items[project.id - 1][1]}
               </p>
