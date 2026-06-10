@@ -8,6 +8,7 @@ const LanguageContext = createContext({
 
 export const translations = {
   en: {
+
     nav: {
       home: 'Home',
       about: 'About',
@@ -16,12 +17,15 @@ export const translations = {
       contact: 'Contact',
       resume: 'Resume',
     },
+
+
     common: {
       role: 'Frontend Developer & UI/UX Designer',
       email: 'Email',
       location: 'Location',
       uzbekistan: 'Uzbekistan',
     },
+
     home: {
       seoTitle: 'Home | Umidjon Portfolio',
       seoDescription: 'Frontend Developer & UI/UX Designer',
@@ -32,6 +36,7 @@ export const translations = {
       contactMe: 'Contact Me',
       codeRole: 'Frontend Dev',
     },
+
     about: {
       seoTitle: 'About | Umidjon',
       seoDescription: 'Learn more about me and my skills',
@@ -43,6 +48,7 @@ export const translations = {
       download: 'Download Resume',
       skills: 'My Skills',
     },
+
     projects: {
       seoTitle: 'Projects | Umidjon',
       seoDescription: 'Explore my portfolio of web development projects',
@@ -56,13 +62,15 @@ export const translations = {
       },
       items: [
         ['E-Commerce Platform', 'A full-featured e-commerce platform with React, Node.js, and MongoDB.'],
-        ['YouTube Clone', 'Modern portfolio website with animations and responsive design.'],
+        ['YouTube Clone', 'An interactive web application that allows users to view and control video content.'],
         ['Task Management App', 'Productivity app for managing daily tasks, boards and project status.'],
         ['Weather Dashboard', 'Real-time weather application with data cards and responsive charts.'],
         ['Social Media Dashboard', 'Analytics dashboard concept for campaign and social media management.'],
         ['Mobile Banking App', 'Secure and user-friendly mobile banking interface concept.'],
       ],
     },
+
+
     services: {
       seoTitle: 'Services | Umidjon',
       seoDescription: 'Services offered by Umidjon',
@@ -77,6 +85,8 @@ export const translations = {
         ['Backend Integration', 'I connect frontends to APIs, forms, data flows and third-party services.'],
       ],
     },
+
+
     contact: {
       seoTitle: 'Contact | Umidjon',
       seoDescription: 'Contact me for collaborations and projects.',
@@ -97,13 +107,7 @@ export const translations = {
       success: 'Message sent successfully!',
       error: 'Error sending message. Please try again.',
     },
-    // notFound: {
-    //   seoTitle: '404 - Page Not Found',
-    //   seoDescription: 'The page you are looking for does not exist.',
-    //   title: 'Page Not Found',
-    //   text: 'Sorry, the page you are looking for does not exist.',
-    //   back: 'Back Home',
-    // },
+
     footer: {
       navigation: 'Navigation',
       home: 'Home',
@@ -115,6 +119,8 @@ export const translations = {
       backTop: 'Back to top',
     },
   },
+
+
   uz: {
     nav: {
       home: 'Bosh sahifa',
@@ -164,7 +170,7 @@ export const translations = {
       },
       items: [
         ['E-Commerce Platforma', "React, Node.js va MongoDB asosida yaratilgan to'liq e-commerce platforma."],
-        ['Portfolio Sayt', 'Animatsiya va responsive dizaynga ega zamonaviy portfolio sayt.'],
+        ['YouTube Clone', "Video kontentni ko‘rish va boshqarish imkonini beruvchi interaktiv web ilova."],
         ['Task Management Ilova', 'Kundalik vazifalar, boardlar va loyiha holatini boshqarish ilovasi.'],
         ['Weather Dashboard', "Real vaqt ob-havo ma'lumotlari va responsive chartlarga ega dashboard."],
         ['Social Media Dashboard', 'Kampaniya va social media boshqaruvi uchun analytics dashboard konsepti.'],
@@ -205,13 +211,6 @@ export const translations = {
       success: 'Xabar muvaffaqiyatli yuborildi!',
       error: "Xabar yuborishda xatolik. Qayta urinib ko'ring.",
     },
-    // notFound: {
-    //   seoTitle: '404 - Sahifa topilmadi',
-    //   seoDescription: 'Siz qidirgan sahifa mavjud emas.',
-    //   title: 'Sahifa topilmadi',
-    //   text: 'Kechirasiz, siz qidirgan sahifa mavjud emas.',
-    //   back: 'Bosh sahifaga qaytish',
-    // },
     footer: {
       navigation: 'Navigatsiya',
       home: 'Bosh sahifa',

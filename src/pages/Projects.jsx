@@ -37,10 +37,10 @@ const projects = [
     id: 4,
     category: 'frontend',
     image:
-      'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&auto=format&fit=crop',
+      'src/Images/50aa51b8-2b7e-407e-9682-1dc4ed9cc5b8.png',
     tech: ['React', 'API', 'Chart.js'],
-    github: 'https://github.com/umid-web',
-    live: 'https://example.com',
+    github: 'https://github.com/umid-web/Weather',
+    live: 'weather-31xo-umidjontojimatov742-9811s-projects.vercel.app',
   },
   {
     id: 5,
