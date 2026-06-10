@@ -1,16 +1,32 @@
-// src/pages/NotFound.jsx
-import React from 'react';
-import SectionWrapper from '@/components/layout/SectionWrapper';
-import SEO from '@/components/common/SEO';
+import { NavLink } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa'
+import SectionWrapper from '@/components/layout/SectionWrapper'
+import SEO from '@/components/common/SEO'
+import { useLanguage } from '@/context/LanguageContext'
+import profileImg from '@/Images/5.png'
+import '@/styles/pages/NotFound.scss'
 
-const NotFound = () => (
-  <>
-    <SEO title="404 - Page Not Found" description="The page you are looking for does not exist." />
-    <SectionWrapper id="notfound">
-      <h2>404 - Not Found</h2>
-      <p>Sorry, the page you are looking for does not exist.</p>
-    </SectionWrapper>
-  </>
-);
+const NotFound = () => {
+  const { t } = useLanguage()
 
-export default NotFound;
+  return (
+    <>
+      <SEO title={t.notFound.seoTitle} description={t.notFound.seoDescription} />
+      <SectionWrapper id="notfound">
+        <div className="not-found-page">
+          <div>
+            <span>404</span>
+            <h2>{t.notFound.title}</h2>
+            <p>{t.notFound.text}</p>
+            <NavLink to="/" className="back-home">
+              <FaArrowLeft /> {t.notFound.back}
+            </NavLink>
+          </div>
+          <img src={profileImg} alt="Portfolio profile media" />
+        </div>
+      </SectionWrapper>
+    </>
+  )
+}
+
+export default NotFound

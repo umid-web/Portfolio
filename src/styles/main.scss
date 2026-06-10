@@ -6,6 +6,7 @@
 @import "base/typography";
 @import "abstracts/_index.scss";
 
+@import "themes/variables";
 @import "themes/dark";
 
 // Utility classes
@@ -15,14 +16,46 @@
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $spacing-4;
-  padding-right: $spacing-4;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .mt-4 { margin-top: $spacing-4; }
 .mb-4 { margin-bottom: $spacing-4; }
 
+.public-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px;
+}
+
+.main-content--home {
+  padding-top: 0;
+}
+
 // Glass card utility (can be applied via class="glass-card")
 .glass-card {
   @include glass-card();
+}
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 38px;
+  min-width: 76px;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
 }

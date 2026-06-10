@@ -1,111 +1,123 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { FaBars, FaTimes, FaDownload } from 'react-icons/fa'
+import { FaBars, FaDownload, FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import LanguageSwitcher from '@/components/common/LanguageSwitcher'
+import LanguageToggle from '@/components/common/LanguageToggle'
+import { useLanguage } from '@/context/LanguageContext'
 import '@/styles/components/Navbar.scss'
-import image from '../../Images/5.png'
 import resumePdf from '@/Images/Tojimatov_Umidjon_Resume.pdf'
+
+const navItems = [
+  { to: '#about', key: 'about' },
+  { to: '#projects', key: 'projects' },
+  { to: '#services', key: 'services' },
+  { to: '#contact', key: 'contact' },
+]
+
 const Navbar = () => {
-  const { t } = useTranslation()
+  const { t } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+  const [activeSection, setActiveSection] = useState('about')
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const handleScrollTo = (e, targetId) => {
+    e.preventDefault()
+    const target = document.querySelector(targetId)
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' })
+      setIsOpen(false)
+    }
+  }
 
-  // Handle scroll effect & mobile menu state
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > window.innerHeight * 0.1)
-    }
+      // Scroll 50px dan oshganda fon o'zgaradi
+      setIsScrolled(window.scrollY > 50)
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-      if (window.innerWidth >= 768) setIsOpen(false)
+      // Active section detection
+      const sections = document.querySelectorAll('section[id]')
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100
+        if (window.scrollY >= sectionTop) {
+          setActiveSection(section.id)
+        }
+      })
     }
 
     window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', handleResize)
+    handleScroll() // initial call
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
+
+    document.body.classList.toggle('nav-modal-open', isOpen)
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.classList.remove('nav-modal-open')
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isOpen])
+
   return (
     <nav
-      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
+      className={`navbar ${isScrolled || isOpen ? 'scrolled' : ''}`}
       role="navigation"
       aria-label="Main navigation"
     >
       <div className="container navbar-container">
-        <NavLink to="/" className="logo" style={{ textDecoration: 'none' }}>
+        <a href="#home" className="logo" onClick={(e) => handleScrollTo(e, '#home')}>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="logo-text">Umid<span>WEB</span></h2>
+            <h2 className="logo-text">
+              Umid<span>WEB</span>
+            </h2>
           </motion.div>
-        </NavLink>
+        </a>
+
         <div className="navbar-actions-mobile">
-          {isMobile && <ThemeToggle />}
-          {isMobile && <LanguageSwitcher />}
-          {isMobile && (
-            <button
-              className="burger"
-              onClick={toggleMenu}
-              aria-expanded={isOpen}
-              aria-controls="nav-menu"
-            >
-              {isOpen ? <FaTimes /> : <FaBars />}
-            </button>
-          )}
+          <LanguageToggle />
+          <button
+            className="burger"
+            onClick={() => setIsOpen((value) => !value)}
+            aria-expanded={isOpen}
+            aria-controls="nav-menu"
+            aria-label="Toggle navigation"
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
 
-        <ul
-          id="nav-menu"
-          className={`nav-links ${isMobile ? (isOpen ? 'open' : 'closed') : ''}`}
-        >
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-              onClick={() => setIsOpen(false)}
-            >
-              {t('nav.home')}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-              onClick={() => setIsOpen(false)}
-            >
-              {t('nav.about')}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/projects"
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-              onClick={() => setIsOpen(false)}
-            >
-              {t('nav.projects')}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-              onClick={() => setIsOpen(false)}
-            >
-              {t('nav.contact')}
-            </NavLink>
-          </li>
+        <button
+          className={`nav-backdrop ${isOpen ? 'open' : ''}`}
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => setIsOpen(false)}
+        />
+
+        <ul id="nav-menu" className={`nav-links ${isOpen ? 'open' : ''}`}>
+          {navItems.map((item) => (
+            <li key={item.to}>
+              <a
+                href={item.to}
+                className={activeSection === item.key ? 'active' : undefined}
+                onClick={(e) => handleScrollTo(e, item.to)}
+              >
+                {t.nav[item.key]}
+              </a>
+            </li>
+          ))}
+
           <li className="nav-extra">
             <a
               href={resumePdf}
@@ -113,14 +125,13 @@ const Navbar = () => {
               className="resume-btn"
               onClick={() => setIsOpen(false)}
             >
-              <FaDownload /> {t('nav.resume')}
+              <FaDownload /> {t.nav.resume}
             </a>
           </li>
-          {!isMobile && (
-            <li className="nav-desktop-actions">
-              <LanguageSwitcher />
-            </li>
-          )}
+
+          <li className="nav-desktop-actions">
+            <LanguageToggle />
+          </li>
         </ul>
       </div>
     </nav>

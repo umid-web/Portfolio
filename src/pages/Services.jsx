@@ -1,46 +1,51 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { FaCode, FaPaintBrush, FaServer } from 'react-icons/fa';
-import SEO from '@/components/common/SEO';
-import '@/styles/pages/Services.scss';
+import { motion } from 'framer-motion'
+import { FaCode, FaLaptopCode, FaPaintBrush, FaServer } from 'react-icons/fa'
+import SEO from '@/components/common/SEO'
+import { useLanguage } from '@/context/LanguageContext'
+import profileImg from '@/Images/5.png'
+import '@/styles/pages/Services.scss'
+
+const services = [
+  {
+    id: 1,
+    icon: <FaCode />,
+  },
+  {
+    id: 2,
+    icon: <FaPaintBrush />,
+  },
+  {
+    id: 3,
+    icon: <FaServer />,
+  },
+]
 
 const Services = () => {
-  const { t } = useTranslation();
-
-  const services = [
-    {
-      id: 1,
-      icon: <FaCode />,
-      title: 'Veb Dasturlash',
-      description: 'Zamonaviy texnologiyalar (React, Vite, SCSS) yordamida yuqori tezlikda ishlovchi veb-saytlar va ilovalar yaratish.'
-    },
-    {
-      id: 2,
-      icon: <FaPaintBrush />,
-      title: 'UI/UX Dizayn',
-      description: 'Foydalanuvchilar uchun qulay, interaktiv va chiroyli dizaynlarni hayotga tatbiq etish.'
-    },
-    {
-      id: 3,
-      icon: <FaServer />,
-      title: 'Backend Integratsiya',
-      description: 'API larni ulash va ma\'lumotlar bazasi bilan ishlash, to\'liq full-stack tajribasini ta\'minlash.'
-    }
-  ];
+  const { t } = useLanguage()
 
   return (
-    <motion.div 
+    <motion.div
       className="services-page container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <SEO title={`${t('nav.services')} | Umidjon`} description="Services offered by Umidjon" />
-      
+      <SEO title={t.services.seoTitle} description={t.services.seoDescription} />
+
       <div className="page-header">
-        <h1>{t('nav.services')}</h1>
+        <h1>{t.services.title}</h1>
+        <p>{t.services.subtitle}</p>
         <div className="heading-line"></div>
+      </div>
+
+      <div className="services-media glass-card">
+        <img src={profileImg} alt="Umidjon working profile" />
+        <div>
+          <span>{t.services.focusLabel}</span>
+          <h2>{t.services.focusTitle}</h2>
+          <p>{t.services.focusText}</p>
+          <FaLaptopCode />
+        </div>
       </div>
 
       <div className="services-grid">
@@ -54,13 +59,13 @@ const Services = () => {
             whileHover={{ y: -10 }}
           >
             <div className="service-icon">{service.icon}</div>
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
+            <h3>{t.services.items[index][0]}</h3>
+            <p>{t.services.items[index][1]}</p>
           </motion.div>
         ))}
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default Services;
+export default Services

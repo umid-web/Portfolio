@@ -1,21 +1,20 @@
-import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { Outlet, useLocation } from 'react-router-dom'
+import Footer from './Footer'
+import Navbar from './Navbar'
 
 const PublicLayout = () => {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   return (
-    <div className="public-layout" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="public-layout">
       <Navbar />
-      <main className="main-content" style={{ flex: 1, paddingTop: isHome ? '0px' : '80px' }}>
+      <main className={`main-content ${isHome ? 'main-content--home' : ''}`}>
         <Outlet />
       </main>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default PublicLayout;
+export default PublicLayout

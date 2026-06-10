@@ -1,16 +1,20 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowRight, FaEnvelope } from 'react-icons/fa'
 import SEO from '@/components/common/SEO'
+import { useLanguage } from '@/context/LanguageContext'
+import About from './About'
+import Projects from './Projects'
+import Services from './Services'
+import Contact from './Contact'
 import '@/styles/pages/Home.scss'
 import homeBg from '@/Images/homeBg.mp4'
 
 const Home = () => {
-  const { t } = useTranslation()
   const navigate = useNavigate()
+  const { t } = useLanguage()
 
   return (
     <motion.div
@@ -20,19 +24,17 @@ const Home = () => {
       exit={{ opacity: 0 }}
     >
       <SEO
-        title={`${t('nav.home')} | Umidjon Portfolio`}
-        description={t('home.subtitle')}
+        title={t.home.seoTitle}
+        description={t.home.seoDescription}
       />
 
-      {/* 🎥 FULLSCREEN VIDEO BACKGROUND */}
       <div className="video-bg">
         <video autoPlay muted loop playsInline>
           <source src={homeBg} type="video/mp4" />
         </video>
       </div>
 
-      {/* CONTENT */}
-      <section className="hero-section">
+      <section id="home" className="hero-section">
         <div className="container hero-container">
           <div className="hero-content">
             <motion.div
@@ -41,7 +43,7 @@ const Home = () => {
               transition={{ duration: 0.6 }}
               className="hero-badge"
             >
-              {t('home.greeting')}
+              {t.home.badge}
             </motion.div>
 
             <motion.h1
@@ -53,11 +55,11 @@ const Home = () => {
               <br />
               <TypeAnimation
                 sequence={[
-                  'Frontend Developer',
+                  t.home.roles[0],
                   2000,
-                  'React Specialist',
+                  t.home.roles[1],
                   2000,
-                  'Web Designer',
+                  t.home.roles[2],
                   2000,
                 ]}
                 wrapper="span"
@@ -72,7 +74,7 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hero-subtitle"
             >
-              {t('home.subtitle')}
+              {t.home.subtitle}
             </motion.p>
 
             <motion.div
@@ -85,20 +87,18 @@ const Home = () => {
                 className="btn btn--primary"
                 onClick={() => navigate('/projects')}
               >
-                {t('home.cta_projects')} <FaArrowRight />
+                {t.home.viewProjects} <FaArrowRight />
               </button>
 
               <button
                 className="btn btn--outline"
                 onClick={() => navigate('/contact')}
               >
-                {t('home.cta_contact')} <FaEnvelope />
+                {t.home.contactMe} <FaEnvelope />
               </button>
-
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE */}
           <motion.div
             className="hero-image"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -118,7 +118,7 @@ const Home = () => {
                   <code>
                     <span className="c-blue">const</span> <span className="c-yellow">developer</span> = {'{\n'}
                     {'  '}<span className="c-purple">name:</span> <span className="c-green">'Umidjon'</span>,{'\n'}
-                    {'  '}<span className="c-purple">role:</span> <span className="c-green">'Frontend Dev'</span>,{'\n'}
+                    {'  '}<span className="c-purple">role:</span> <span className="c-green">'{t.home.codeRole}'</span>,{'\n'}
                     {'  '}<span className="c-purple">skills:</span> [<span className="c-green">'React'</span>, <span className="c-green">'SCSS'</span>, <span className="c-green">'Vite'</span>]{'\n'}
                     {'}'};
                   </code>
@@ -127,6 +127,22 @@ const Home = () => {
             </div>
           </motion.div>
         </div>
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="projects">
+        <Projects />
+      </section>
+
+      <section id="services">
+        <Services />
+      </section>
+
+      <section id="contact">
+        <Contact />
       </section>
     </motion.div>
   )

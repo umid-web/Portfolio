@@ -5,29 +5,28 @@
   padding: 4rem 0 2rem;
   background: var(--bg-primary);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-
   .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 3rem;
     margin-bottom: 3rem;
   }
 
   .footer-brand {
     max-width: 400px;
-    
+
     h3 {
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      
+
       span {
         color: #818cf8;
       }
     }
-    
+
     p {
       color: var(--text-secondary);
       font-size: 0.95rem;
@@ -38,7 +37,7 @@
   .footer-socials {
     display: flex;
     gap: 1rem;
-    
+
     a {
       display: flex;
       align-items: center;
@@ -50,7 +49,7 @@
       color: #818cf8;
       font-size: 1.2rem;
       transition: all 0.3s ease;
-      
+
       &:hover {
         background: #818cf8;
         color: #fff;
@@ -74,12 +73,12 @@
     .footer-content {
       flex-direction: column;
       text-align: center;
-      
+
       .footer-brand {
         margin: 0 auto;
       }
     }
-    
+
     .footer-socials {
       justify-content: center;
     }

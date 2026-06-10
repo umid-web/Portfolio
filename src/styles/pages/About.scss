@@ -1,30 +1,40 @@
 .about-page {
-  padding: 4rem 0;
+  padding: 2rem 0;
+  margin: 50px auto;
 
   .page-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      max-width: 560px;
+      margin: 0 auto 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
     .heading-line {
-      width: 80px;
-      height: 4px;
+      width: 60px;
+      height: 3px;
       background: linear-gradient(90deg, #6366f1, #a855f7);
       margin: 0 auto;
-      border-radius: 10px;
+      border-radius: 8px;
     }
   }
 
   .about-content {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 4rem;
+    grid-template-columns: minmax(200px, 0.7fr) minmax(0, 1.3fr);
+    gap: 2rem;
     align-items: center;
+    padding: 0 20px;
   }
 
   /* IMAGE SECTION */
@@ -34,13 +44,13 @@
     &::after {
       content: '';
       position: absolute;
-      inset: -15px;
+      inset: -10px;
       background: linear-gradient(135deg, #6366f1, #a855f7, #facc15, #6366f1);
       background-size: 300% 300%;
-      border-radius: 30px;
+      border-radius: 20px;
       z-index: -1;
-      opacity: 0.4;
-      filter: blur(20px);
+      opacity: 0.3;
+      filter: blur(15px);
       animation: rotateGlow 8s ease infinite;
     }
   }
@@ -52,17 +62,19 @@
   }
 
   .about-image-wrapper {
-    padding: 1rem;
-    border-radius: 28px;
+    padding: 0.8rem;
+    border-radius: 20px;
     background: rgba(20, 17, 50, 0.8);
     overflow: hidden;
     aspect-ratio: 1;
+    max-width: 350px;
+    margin: 0 auto;
 
     .about-profile-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 16px;
       display: block;
       transition: 0.4s ease;
     }
@@ -75,44 +87,46 @@
   /* TEXT */
   .about-text {
     h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
       color: #818cf8;
     }
 
     .lead {
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: var(--text-primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       font-weight: 500;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     p {
       color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
     }
 
     .about-actions {
-      margin-top: 2rem;
-      margin-bottom: 3rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
 
       .btn {
         display: inline-flex;
         align-items: center;
-        gap: 0.7rem;
-        padding: 0.9rem 1.8rem;
-        border-radius: 14px;
+        gap: 0.5rem;
+        padding: 0.7rem 1.4rem;
+        border-radius: 10px;
         background: linear-gradient(135deg, #6366f1, #a855f7);
         color: white;
         text-decoration: none;
         font-weight: 600;
         transition: 0.3s ease;
+        font-size: 0.9rem;
 
         &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
         }
       }
     }
@@ -121,29 +135,29 @@
   /* SKILLS */
   .skills-section {
     h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .skills-grid {
       display: grid;
-      gap: 1.2rem;
+      gap: 0.8rem;
     }
 
     .skill-item {
       .skill-info {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.6rem;
-        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+        font-size: 0.85rem;
         font-weight: 500;
       }
 
       .skill-bar-bg {
         width: 100%;
-        height: 14px;
+        height: 10px;
         background: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
+        border-radius: 8px;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         overflow: hidden;
 
@@ -151,7 +165,7 @@
           height: 100%;
           background: linear-gradient(90deg, #6366f1, #a855f7, #facc15);
           background-size: 200% 100%;
-          border-radius: 12px;
+          border-radius: 8px;
           position: relative;
           box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
           animation: moveGradient 3s linear infinite;
@@ -171,11 +185,11 @@
   .about-page {
     .about-content {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
     }
 
     .about-image-container {
-      max-width: 420px;
+      max-width: 320px;
       margin: 0 auto;
     }
 
@@ -188,11 +202,11 @@
 @media (max-width: 576px) {
   .about-page {
     .page-header h1 {
-      font-size: 2.2rem;
+      font-size: 1.6rem;
     }
 
     .about-text h2 {
-      font-size: 1.7rem;
+      font-size: 1.3rem;
     }
   }
 }

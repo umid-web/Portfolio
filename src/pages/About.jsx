@@ -1,25 +1,22 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { FaDownload } from 'react-icons/fa'
-
 import SEO from '@/components/common/SEO'
+import { useLanguage } from '@/context/LanguageContext'
 import profileImg from '@/Images/5.png'
 import resumePdf from '@/Images/Tojimatov_Umidjon_Resume.pdf'
-
 import '@/styles/pages/About.scss'
 
-const About = () => {
-  const { t } = useTranslation()
+const skills = [
+  { name: 'React.js', level: 80 },
+  { name: 'JavaScript (ES6+)', level: 80 },
+  { name: 'HTML5 & CSS3', level: 95 },
+  { name: 'Sass / SCSS', level: 95 },
+  { name: 'Tailwind CSS', level: 80 },
+  { name: 'Vite & Webpack', level: 80 },
+]
 
-  const skills = [
-    { name: 'React.js', level: 80 },
-    { name: 'JavaScript (ES6+)', level: 80 },
-    { name: 'HTML5 & CSS3', level: 95 },
-    { name: 'Sass / SCSS', level: 95 },
-    { name: 'Tailwind CSS', level: 80 },
-    { name: 'Vite & Webpack', level: 80 },
-  ]
+const About = () => {
+  const { t } = useLanguage()
 
   return (
     <motion.div
@@ -29,19 +26,17 @@ const About = () => {
       exit={{ opacity: 0 }}
     >
       <SEO
-        title={`${t('nav.about')} | Umidjon`}
-        description={t('about.description')}
+        title={t.about.seoTitle}
+        description={t.about.seoDescription}
       />
 
-      {/* PAGE HEADER */}
       <div className="page-header">
-        <h1>{t('about.title')}</h1>
+        <h1>{t.about.title}</h1>
+        <p>{t.about.subtitle}</p>
         <div className="heading-line"></div>
       </div>
 
-      {/* CONTENT */}
       <div className="about-content">
-        {/* IMAGE */}
         <motion.div
           className="about-image-container"
           initial={{ opacity: 0, x: -30 }}
@@ -53,34 +48,31 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* TEXT */}
         <motion.div
           className="about-text"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2>{t('about.subtitle')}</h2>
+          <h2>{t.about.heading}</h2>
 
-          <p className="lead">{t('about.description')}</p>
+          <p className="lead">{t.about.lead}</p>
 
-          <p>{t('about.extended_desc')}</p>
+          <p>{t.about.body}</p>
 
-          {/* BUTTONS */}
           <div className="about-actions">
             <a href={resumePdf} download className="btn btn--primary">
               <FaDownload />
-              {t('nav.resume')}
+              {t.about.download}
             </a>
           </div>
 
-          {/* SKILLS */}
           <div className="skills-section mt-4">
-            <h3>{t('about.skills')}</h3>
+            <h3>{t.about.skills}</h3>
 
             <div className="skills-grid">
-              {skills.map((skill, index) => (
-                <div key={index} className="skill-item">
+              {skills.map((skill) => (
+                <div key={skill.name} className="skill-item">
                   <div className="skill-info">
                     <span>{skill.name}</span>
                     <span>{skill.level}%</span>
@@ -90,14 +82,9 @@ const About = () => {
                     <motion.div
                       className="skill-bar-fill"
                       initial={{ width: 0 }}
-                      whileInView={{
-                        width: `${skill.level}%`,
-                      }}
+                      whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
-                      transition={{
-                        duration: 1,
-                        delay: 0.2,
-                      }}
+                      transition={{ duration: 1, delay: 0.2 }}
                     />
                   </div>
                 </div>
