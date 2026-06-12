@@ -42,7 +42,7 @@ const projects = [
     image: weatherImg,
     tech: ['React', 'API', 'Chart.js'],
     github: 'https://github.com/umid-web/Weather',
-    live: 'https://weather-31xo-umidjontojimatov742-9811s-projects.vercel.app/',
+    live: 'weather-full.netlify.app',
   },
   {
     id: 5,
