@@ -14,10 +14,9 @@ const projects = [
   {
     id: 1,
     category: 'fullstack',
-    image:
-      'src/Images/CourceImg.png',
+    image: LearningcenterImg,
     tech: ['React', 'MongoDB', 'Stripe'],
-    github: 'https://github.com/umid-web',
+    github: 'https://github.com/umid-web/LearningCenter',
     live: 'https://learning-center-amber.vercel.app/',
   },
   {
@@ -136,9 +135,7 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-link"
-                    aria-label={`${
-                      t.projects.items[project.id - 1][0]
-                    } GitHub`}
+                    aria-label={`${t.projects.items[project.id - 1][0]} GitHub`}
                   >
                     <FaGithub />
                   </a>
