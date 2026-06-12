@@ -7,6 +7,7 @@ const LanguageContext = createContext({
 })
 
 export const translations = {
+  //iglizchasi
   en: {
 
     nav: {
@@ -61,8 +62,8 @@ export const translations = {
         uiux: 'UI/UX',
       },
       items: [
-        ['E-Commerce Platform', 'A full-featured e-commerce platform with React, Node.js, and MongoDB.'],
-        ['YouTube Clone', 'An interactive web application that allows users to view and control video content.'],
+        ['Education Center Promo Website', 'A modern and responsive promotional website for an educational center showcasing courses, teachers, schedules, and student achievements with React.'],
+        ['YouTube Clone', 'An interactive web application that allows users to view and control video content'],
         ['Task Management App', 'Productivity app for managing daily tasks, boards and project status.'],
         ['Weather Dashboard', 'Real-time weather application with data cards and responsive charts.'],
         ['Social Media Dashboard', 'Analytics dashboard concept for campaign and social media management.'],
@@ -120,7 +121,7 @@ export const translations = {
     },
   },
 
-
+//uzbekchasi
   uz: {
     nav: {
       home: 'Bosh sahifa',
@@ -169,7 +170,7 @@ export const translations = {
         uiux: 'UI/UX',
       },
       items: [
-        ['E-Commerce Platforma', "React, Node.js va MongoDB asosida yaratilgan to'liq e-commerce platforma."],
+        ["Ta'lim markazi reklama veb-sayti", "React yordamida kurslar, o'qituvchilar, jadvallar va talabalarning yutuqlarini namoyish etuvchi ta'lim markazi uchun zamonaviy va moslashuvchan reklama veb-sayti."],
         ['YouTube Clone', "Video kontentni ko‘rish va boshqarish imkonini beruvchi interaktiv web ilova."],
         ['Task Management Ilova', 'Kundalik vazifalar, boardlar va loyiha holatini boshqarish ilovasi.'],
         ['Weather Dashboard', "Real vaqt ob-havo ma'lumotlari va responsive chartlarga ega dashboard."],

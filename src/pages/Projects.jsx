@@ -14,10 +14,10 @@ const projects = [
     id: 1,
     category: 'fullstack',
     image:
-      'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      'src/Images/CourceImg.png',
+    tech: ['React', 'MongoDB', 'Stripe'],
     github: 'https://github.com/umid-web',
-    live: 'https://example.com',
+    live: 'https://learning-center-amber.vercel.app/',
   },
   {
     id: 2,
