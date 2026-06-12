@@ -13,7 +13,7 @@ import LearningcenterImg from '@/Images/CourceImg.png'
 const projects = [
   {
     id: 1,
-    category: 'fullstack',
+    category: 'frontend',
     image: LearningcenterImg,
     tech: ['React', 'MongoDB', 'Stripe'],
     github: 'https://github.com/umid-web/LearningCenter',
