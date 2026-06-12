@@ -8,6 +8,7 @@ import '@/styles/pages/Projects.scss'
 // Local images
 import movieImg from '@/Images/9b7449a1-6a78-4464-86ab-47e6238e17c7.png'
 import weatherImg from '@/Images/50aa51b8-2b7e-407e-9682-1dc4ed9cc5b8.png'
+import LearningcenterImg from '@/Images/CourceImg.png'
 
 const projects = [
   {
