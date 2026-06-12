@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { useNavigate } from 'react-router-dom'
-import { FaArrowRight, FaEnvelope } from 'react-icons/fa'
+import { FaArrowRight, FaTelegramPlane } from 'react-icons/fa'
 import SEO from '@/components/common/SEO'
 import { useLanguage } from '@/context/LanguageContext'
 import About from './About'
@@ -92,40 +92,16 @@ const Home = () => {
 
               <button
                 className="btn btn--outline"
-                onClick={() => navigate('/contact')}
+                onClick={() =>
+                  window.open('https://t.me/umid_web', '_blank')
+                }
               >
-                {t.home.contactMe} <FaEnvelope />
+                {t.home.contactMe} <FaTelegramPlane />
               </button>
             </motion.div>
           </div>
 
-          <motion.div
-            className="hero-image"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="blob"></div>
-
-            <div className="glass-panel">
-              <div className="mac-header">
-                <span className="mac-dot red"></span>
-                <span className="mac-dot yellow"></span>
-                <span className="mac-dot green"></span>
-              </div>
-              <div className="code-snippet">
-                <pre>
-                  <code>
-                    <span className="c-blue">const</span> <span className="c-yellow">developer</span> = {'{\n'}
-                    {'  '}<span className="c-purple">name:</span> <span className="c-green">'Umidjon'</span>,{'\n'}
-                    {'  '}<span className="c-purple">role:</span> <span className="c-green">'{t.home.codeRole}'</span>,{'\n'}
-                    {'  '}<span className="c-purple">skills:</span> [<span className="c-green">'React'</span>, <span className="c-green">'SCSS'</span>, <span className="c-green">'Vite'</span>]{'\n'}
-                    {'}'};
-                  </code>
-                </pre>
-              </div>
-            </div>
-          </motion.div>
+          {/* Qolgan kodlaringiz shu yerda davom etadi */}
         </div>
       </section>
 
